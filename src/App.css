@@ -1,0 +1,427 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Light Mode (padrão) */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.app.light {
+  background-color: #f5f5f5;
+}
+
+.app.dark {
+  background-color: #1a1a1a;
+}
+
+.scroll-area {
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Loading */
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.light .loading {
+  color: #333;
+}
+
+.dark .loading {
+  color: #fff;
+}
+
+/* Menu flutuante */
+.floating-menu {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 100px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light .floating-menu {
+  background: #ffffff;
+}
+
+.dark .floating-menu {
+  background: #2a2a2a;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Seletor de colunas - 4 caixas */
+.column-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.column-box {
+  width: 20px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.light .column-box {
+  background: #e0e0e0;
+}
+
+.light .column-box:hover {
+  background: #ccc;
+}
+
+.light .column-box.active {
+  background: #000;
+}
+
+.dark .column-box {
+  background: #444;
+}
+
+.dark .column-box:hover {
+  background: #555;
+}
+
+.dark .column-box.active {
+  background: #fff;
+}
+
+.menu-divider {
+  width: 1px;
+  height: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.light .menu-divider {
+  background: #e0e0e0;
+}
+
+.dark .menu-divider {
+  background: #444;
+}
+
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.light .mode-label {
+  color: #999;
+}
+
+.light .mode-label.active {
+  color: #000;
+}
+
+.dark .mode-label {
+  color: #666;
+}
+
+.dark .mode-label.active {
+  color: #fff;
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.light .toggle-switch {
+  background: #e8e8e8;
+}
+
+.light .toggle-switch:hover {
+  background: #ddd;
+}
+
+.dark .toggle-switch {
+  background: #444;
+}
+
+.dark .toggle-switch:hover {
+  background: #555;
+}
+
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  transition: left 0.2s ease, background-color 0.3s ease;
+}
+
+.light .toggle-thumb {
+  background: #000;
+}
+
+.dark .toggle-thumb {
+  background: #fff;
+}
+
+.toggle-thumb.left {
+  left: 3px;
+}
+
+.toggle-thumb.right {
+  left: 23px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.light .theme-toggle {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.light .theme-toggle:hover {
+  background: #e0e0e0;
+}
+
+.dark .theme-toggle {
+  background: #444;
+  color: #fff;
+}
+
+.dark .theme-toggle:hover {
+  background: #555;
+}
+
+/* Container fixo */
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Shape */
+.shape {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: auto;
+  padding: clamp(24px, 5vw, 48px);
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Shape com fundo claro - texto escuro */
+.shape.shape-light .shape-title {
+  color: #000;
+}
+
+.shape.shape-light .shape-text {
+  color: #333;
+}
+
+/* Shape com fundo escuro - texto claro */
+.shape.shape-dark .shape-title {
+  color: #fff;
+}
+
+.shape.shape-dark .shape-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Conteúdo do shape */
+.shape-content {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.shape-title {
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: clamp(8px, 1.5vw, 16px);
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.shape-text {
+  font-size: clamp(0.75rem, 1.5vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 100%;
+  transition: color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .floating-menu {
+    bottom: 20px;
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .column-selector {
+    gap: 5px;
+  }
+
+  .column-box {
+    width: 18px;
+    height: 22px;
+  }
+
+  .mode-label {
+    font-size: 10px;
+  }
+
+  .toggle-switch {
+    width: 38px;
+    height: 22px;
+  }
+
+  .toggle-thumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  .toggle-thumb.right {
+    left: 19px;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .shape {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-menu {
+    bottom: 16px;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  .column-selector {
+    gap: 4px;
+  }
+
+  .column-box {
+    width: 16px;
+    height: 20px;
+  }
+
+  .mode-toggle {
+    gap: 6px;
+  }
+
+  .mode-label {
+    font-size: 9px;
+  }
+
+  .toggle-switch {
+    width: 34px;
+    height: 20px;
+  }
+
+  .toggle-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  .toggle-thumb.right {
+    left: 17px;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .shape {
+    border-radius: 12px;
+  }
+}
