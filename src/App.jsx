@@ -332,6 +332,20 @@ function App() {
       />
 
       <div className="floating-menu">
+        <div className="reports-counter">
+          <span className="counter-item">
+            <span className="counter-label">Total de reports:</span>
+            <span className="counter-value">{positiveReviews.length + problemReviews.length}</span>
+          </span>
+          <span className="counter-divider">/</span>
+          <span className="counter-item">
+            <span className="counter-label">Reports negativos:</span>
+            <span className="counter-value negative">{problemReviews.length}</span>
+          </span>
+        </div>
+
+        <div className="menu-divider" />
+
         <div className="column-selector">
           {[0, 1, 2, 3].map(index => (
             <button

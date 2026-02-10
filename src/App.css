@@ -69,6 +69,45 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
+/* Contadores de reports */
+.reports-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.counter-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.counter-label {
+  opacity: 0.7;
+}
+
+.counter-value {
+  font-weight: 700;
+}
+
+.counter-value.negative {
+  color: #e74c3c;
+}
+
+.counter-divider {
+  opacity: 0.4;
+}
+
+.light .reports-counter {
+  color: #333;
+}
+
+.dark .reports-counter {
+  color: #fff;
+}
+
 /* Seletor de colunas - 4 caixas */
 .column-selector {
   display: flex;
@@ -330,6 +369,11 @@
     gap: 12px;
   }
 
+  .reports-counter {
+    font-size: 10px;
+    gap: 6px;
+  }
+
   .column-selector {
     gap: 5px;
   }
@@ -377,6 +421,27 @@
     bottom: 16px;
     padding: 8px 12px;
     gap: 10px;
+  }
+
+  .reports-counter {
+    font-size: 9px;
+    gap: 4px;
+  }
+
+  .counter-label {
+    display: none;
+  }
+
+  .counter-item::before {
+    font-size: 8px;
+  }
+
+  .counter-item:first-child::before {
+    content: 'Total: ';
+  }
+
+  .counter-item:last-child::before {
+    content: 'Neg: ';
   }
 
   .column-selector {
