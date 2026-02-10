@@ -5,14 +5,23 @@ import './App.css'
 // Cores para os shapes
 const SHAPE_COLORS = ['#342D37', '#9C53FF', '#BFAFC8', '#FFFFFF', '#99F2AE']
 
-// Função para determinar se a cor é escura
+// Cores que devem ter texto do autor em preto
+const LIGHT_BG_COLORS = ['#9C53FF', '#FFFFFF', '#99F2AE', '#BFAFC8', '#C49CD8']
+
+// Função para determinar se a cor é escura (para texto da descrição)
 const isDark = (color) => {
-  const hex = color.replace('#', '')
+  const hex = color.replace('#', '').toUpperCase()
   const r = parseInt(hex.substr(0, 2), 16)
   const g = parseInt(hex.substr(2, 2), 16)
   const b = parseInt(hex.substr(4, 2), 16)
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
   return luminance < 0.5
+}
+
+// Função para determinar se o autor deve ser preto ou branco
+const shouldAuthorBeBlack = (color) => {
+  const normalizedColor = color.toUpperCase()
+  return LIGHT_BG_COLORS.some(c => c.toUpperCase() === normalizedColor)
 }
 
 // Espaçamento igual para todas as bordas e gap
@@ -89,7 +98,8 @@ function App() {
         author: truncateText(review.author, 30),
         content: truncateText(review.content, 150),
         bgColor,
-        isLight: !isDark(bgColor)
+        isLight: !isDark(bgColor),
+        authorBlack: shouldAuthorBeBlack(bgColor)
       }
     })
   }
@@ -115,9 +125,9 @@ function App() {
       case 2:
         return 1 // 100%
       case 3:
-        return 0.8 // 80% (20% menor)
+        return 0.56 // 56% (30% menor que antes)
       case 4:
-        return 0.68 // 68% (80% * 85% = mais 15% menor)
+        return 0.476 // 47.6% (30% menor que 3 colunas)
       default:
         return 1
     }
@@ -359,7 +369,7 @@ function App() {
               >
                 <div className="shape-content">
                   <p className="shape-text">{item.content}</p>
-                  <span className="shape-author">{item.author}</span>
+                  <span className={`shape-author ${item.authorBlack ? 'author-black' : 'author-white'}`}>{item.author}</span>
                 </div>
               </div>
             ))}
