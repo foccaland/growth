@@ -297,15 +297,15 @@
 }
 
 .shape-text {
-  font-size: clamp(0.875rem, 2.1vw, 1.75rem);
+  font-size: calc(clamp(1.25rem, 3vw, 2.5rem) * var(--font-scale, 1));
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: clamp(12px, 2vw, 20px);
   letter-spacing: -0.02em;
-  transition: color 0.3s ease;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  transition: color 0.3s ease, font-size 0.3s ease;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none;
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
@@ -317,8 +317,9 @@
   font-weight: 500;
   line-height: 1.4;
   transition: color 0.3s ease;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 /* Responsividade */

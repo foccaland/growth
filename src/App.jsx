@@ -108,6 +108,23 @@ function App() {
     }
   }
 
+  // Calcula o fator de escala da fonte baseado no número de colunas
+  const getFontScale = () => {
+    switch (numColumns) {
+      case 1:
+      case 2:
+        return 1 // 100%
+      case 3:
+        return 0.8 // 80% (20% menor)
+      case 4:
+        return 0.68 // 68% (80% * 85% = mais 15% menor)
+      default:
+        return 1
+    }
+  }
+
+  const fontScale = getFontScale()
+
   const visibleRows = getVisibleRows()
   const availableHeight = viewportHeight - (SPACING * 2)
   const shapeHeight = (availableHeight - (SPACING * (visibleRows - 1))) / visibleRows
@@ -316,7 +333,11 @@ function App() {
       
       <div 
         className="fixed-container"
-        style={{ padding: SPACING, gap: SPACING }}
+        style={{ 
+          padding: SPACING, 
+          gap: SPACING,
+          '--font-scale': fontScale
+        }}
       >
         {columns.map(column => (
           <div 
