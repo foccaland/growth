@@ -337,8 +337,8 @@ function App() {
                 }}
               >
                 <div className="shape-content">
-                  <h2 className="shape-title">{item.author}</h2>
                   <p className="shape-text">{item.content}</p>
+                  <span className="shape-author">{item.author}</span>
                 </div>
               </div>
             ))}

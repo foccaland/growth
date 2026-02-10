@@ -272,21 +272,21 @@
 }
 
 /* Shape com fundo claro - texto escuro */
-.shape.shape-light .shape-title {
+.shape.shape-light .shape-text {
   color: #000;
 }
 
-.shape.shape-light .shape-text {
-  color: #333;
+.shape.shape-light .shape-author {
+  color: #666;
 }
 
 /* Shape com fundo escuro - texto claro */
-.shape.shape-dark .shape-title {
+.shape.shape-dark .shape-text {
   color: #fff;
 }
 
-.shape.shape-dark .shape-text {
-  color: rgba(255, 255, 255, 0.7);
+.shape.shape-dark .shape-author {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Conteúdo do shape */
@@ -296,31 +296,29 @@
   overflow: hidden;
 }
 
-.shape-title {
-  font-size: clamp(1.25rem, 3vw, 2.5rem);
+.shape-text {
+  font-size: clamp(0.875rem, 2.1vw, 1.75rem);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: clamp(8px, 1.5vw, 16px);
+  margin-bottom: clamp(12px, 2vw, 20px);
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.shape-text {
-  font-size: clamp(0.75rem, 1.5vw, 1.1rem);
-  font-weight: 400;
+.shape-author {
+  font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+  font-weight: 500;
   line-height: 1.4;
-  max-width: 100%;
   transition: color 0.3s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* Responsividade */
